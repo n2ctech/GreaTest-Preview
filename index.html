@@ -1,0 +1,19 @@
+<video id="myVideo" controls></video>
+
+<!-- Use HLS.js to support the HLS format in browsers. -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@0.8.2"></script>
+<script>
+  (function() {
+    // Replace with your asset's playback ID
+    var playbackId = "DLBQYOT4ZdFXrGqguk601JRxq4xJaZ2GX";
+    var url = "https://stream.mux.com/" + playbackId + ".m3u8";
+
+    // HLS.js-specific setup code
+    if (Hls.isSupported()) {
+      var video = document.getElementById("myVideo");
+      var hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+    }
+  })();
+</script>
