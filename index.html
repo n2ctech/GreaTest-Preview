@@ -1,19 +1,48 @@
-<video id="myVideo" controls></video>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+      }
+      #player-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #fff;
+        z-index: 999;
+      }
+      video {
+        display: inline-block;
+        max-height: 100%;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
 
-<!-- Use HLS.js to support the HLS format in browsers. -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@0.8.2"></script>
-<script>
-  (function() {
-    // Replace with your asset's playback ID
-    var playbackId = "F9DmevVo7CcsiuyQqPkb8E1OS3u01iPBQ";
-    var url = "https://stream.mux.com/" + playbackId + ".m3u8";
+  <body>
+    <div id="player-overlay">
+      <video id="myVideo" controls></video>
+    </div>
+  </body>
 
-    // HLS.js-specific setup code
-    if (Hls.isSupported()) {
-      var video = document.getElementById("myVideo");
-      var hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(video);
-    }
-  })();
-</script>
+  <!-- Use HLS.js to support the HLS format in browsers. -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@0.8.2"></script>
+  <script>
+    (function() {
+      // Replace with your asset's playback ID
+      var playbackId = "F9DmevVo7CcsiuyQqPkb8E1OS3u01iPBQ";
+      var url = "https://stream.mux.com/" + playbackId + ".m3u8";
+
+      // HLS.js-specific setup code
+      if (Hls.isSupported()) {
+        var video = document.getElementById("myVideo");
+        var hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+      }
+    })();
+  </script>
+</html>
